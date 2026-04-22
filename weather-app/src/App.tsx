@@ -13,7 +13,7 @@ function App() {
   const [searchInput, setSearchInput] = useState('');
 
   const weatherType = selectedDay 
-    ? getWeatherType(selectedDay.weather[0].id)
+    ? getWeatherType(selectedDay.weather[0].id) //
     : 'clear';
   const theme = getThemeByWeather(weatherType);
 

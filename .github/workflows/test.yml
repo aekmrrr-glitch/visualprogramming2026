@@ -1,0 +1,31 @@
+name: Build React App
+
+on:
+  push:
+    branches: [ "lab89", "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20
+          cache: 'npm'
+          cache-dependency-path: weather-app/package-lock.json
+          
+      - name: Install dependencies
+        run: |
+          cd weather-app
+          npm ci
+          
+      - name: Build
+        run: |
+          cd weather-app
+          npm run build
